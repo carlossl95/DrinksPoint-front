@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Ajustar Estoque</h2>
+                    <span>Para reduzir a quantidade de estoque deve ser colocado numero negativo EX: -5</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <span>Produto: {{produto?.descricao}}</span>
+                <span>Qtd. Estoque: {{produto?.quantidade}}</span>
+            </div>
+            <br>
+            <div class="row">
+                <form [formGroup]="form" (ngSubmit)="salvar()">
+
+                    <div class="form-group">
+                        <label for="quantidade" class="form-label">Adiciona/Retira quantidade Estoque:</label>
+                        <input type="number" class="form-control" formControlName="quantidade" id="quantidade"autocomplete="off">                        
+                        <br>
+
+                        <input type="submit" value="Salvar" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

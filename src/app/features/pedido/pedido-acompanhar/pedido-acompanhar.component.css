@@ -1,0 +1,13 @@
+.dados{
+    background-color: rgb(166, 219, 255);
+    width: 350px;
+    border-radius: 10px;
+    line-height: 30px;
+    text-align:left;
+    font-weight:bolder,    
+}
+
+li{
+    line-height: 30px;
+}
+

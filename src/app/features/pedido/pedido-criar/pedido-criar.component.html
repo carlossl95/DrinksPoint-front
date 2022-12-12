@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Novo Pedido</h2>
+                </div>
+            </div>
+            <div class="row">
+                <form [formGroup]="form" (ngSubmit)="salvar()">
+                    <div class="form-group">
+                        <label for="cpf" class="form-label">Cpf Cliente</label>
+                        <input type="text" class="form-control" formControlName="cpf" id="nome" autocomplete="off">
+                        <div class="alert alert-danger" [hidden]="form.get('cpf')?.valid || form.get('cpf')?.pristine">
+                            <span *ngIf="form.get('cpf')?.errors?.['required']">CPF é obrigatório!!<br></span>
+                            <span *ngIf="form.get('cpf')?.errors?.['minlength']">CPF deve conter 11 digitos<br></span>
+                            <span *ngIf="form.get('cpf')?.errors?.['maxlength']">CPF deve conter apenas 11
+                                digitos<br></span>
+                            <span *ngIf="form.get('cpf')?.errors?.['pattern']">CPF deve conter apenas caracteres
+                                numéricos</span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="produto" class="form-label">Produto:</label>
+                        <select class="form-select" formControlName="produto">
+                            <option selected>Selecione um Produto</option>
+                            <option *ngFor="let produtoId of listaProduto" value="{{produtoId.idProduto}}">
+                                {{produtoId.descricao}} R${{ produtoId.valor }}
+                            </option>
+                        </select>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="quantidade" class="form-label">Quantidade:</label>
+                        <input type="number" class="form-control" formControlName="quantidade" id="quantidade"
+                            autocomplete="off">
+                        <div class="alert alert-danger"
+                            [hidden]="form.get('quantidade')?.valid || form.get('quantidade')?.pristine">
+                            <span *ngIf="form.get('quantidade')?.errors?.['required']">quantidade é
+                                obrigatório!!<br></span>
+                            <span *ngIf="form.get('quantidade')?.errors?.['min']">quantidade deve ser maior que
+                                0!!<br></span>
+                            <span *ngIf="form.get('quantidade')?.errors?.['pattern']">quantidade deve conter apenas
+                                numeros inteiros<br></span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <input type="submit" value="Criar Pedido" class="btn btn-primary">
+
+                </form>
+            </div>
+        </div>
+    </div>

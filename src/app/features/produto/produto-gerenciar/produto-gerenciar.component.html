@@ -1,0 +1,68 @@
+<div class="background-image">
+
+    <div class="row ">
+        <div class="col-md-8 offset-md-2" >
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Gerenciamento Produtos</h2>
+                </div>
+
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Cod. Produto</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Data Validade</th>
+                                <th>Quantidade</th>
+                                <th>Disponivel</th>
+                                <th>Acões</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let produto of listaProduto">
+                                <td>{{ produto.idProduto }}</td>
+                                <td>{{ produto.descricao }}</td>
+                                <td>R$ {{ produto.valor }}</td>
+                                <td>{{ produto.validade | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ produto.quantidade }}</td>
+                                <td>
+                                    <div *ngIf="produto.ativo == true">
+                                        <div class="ativado"></div>
+                                    </div>
+                                    <div *ngIf="produto.ativo == false">
+                                        <div class="desativado"></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" (click)="EditarProduto(produto.idProduto!)"
+                                        class="btn btn-warning mx-1"
+                                        style="--bs-btn-padding-y: .03rem; --bs-btn-padding-x: .0rem; --bs-btn-font-size: .75rem;">
+                                        Editar
+                                    </button>
+                                    <button type="button" (click)="Deletar(produto)" class="btn btn-danger mx-"
+                                        style="--bs-btn-padding-y: .03rem; --bs-btn-padding-x: .0rem; --bs-btn-font-size: .75rem;">
+                                        Excluir
+                                    </button>
+
+                                    <button type="button" (click)="Status(produto)" class="btn btn-secondary mx-1"
+                                        style="--bs-btn-padding-y: .03rem; --bs-btn-padding-x: .0rem; --bs-btn-font-size: .75rem;">
+                                        Status
+                                    </button>
+
+                                    <button type="button" (click)="AtualizaEstoque(produto.idProduto!)"
+                                        class="btn btn-primary mx-1"
+                                        style="--bs-btn-padding-y: .03rem; --bs-btn-padding-x: .0rem; --bs-btn-font-size: .75rem;">
+                                        Estoque
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Editar Produto</h2>
+                </div>
+            </div>
+            <div class="row">
+                <form [formGroup]="form" (ngSubmit)="salvar()">
+                    <div class="form-group">
+                        <label for="descricao" class="form-label">Descrição:</label>
+                        <input type="text" class="form-control" formControlName="descricao" id="descricao"
+                            autocomplete="off">
+                        <div class="alert alert-danger"
+                            [hidden]="form.get('descricao')?.valid || form.get('descricao')?.pristine">
+                            <span *ngIf="form.get('descricao')?.errors?.['required']">A descriçãoo é Obrigatório!</span>
+                            <span *ngIf="form.get('descricao')?.errors?.['minlength']">Minimo 3 caracteres!</span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="valor" class="form-label">Valor:</label>
+                        <input type="number" step=1 class="form-control" formControlName="valor" id="valor"
+                            autocomplete="off">
+                        <div class="alert alert-danger"
+                            [hidden]="form.get('valor')?.valid || form.get('valor')?.pristine">
+                            <span *ngIf="form.get('valor')?.errors?.['required']">valor é obrigatório!!</span>
+                            <span *ngIf="form.get('valor')?.errors?.['min']">valor deve ser maior que 0!</span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="validade" class="form-label">Data Validade:</label>
+                        <input type="date" class="form-control" formControlName="validade" id="validade"
+                            autocomplete="off">
+                        <div class="alert alert-danger"
+                            [hidden]="form.get('validade')?.valid || form.get('validade')?.pristine">
+                            <span *ngIf="form.get('validade')?.errors?.['required']">Data de nascimento é
+                                obrigatória<br></span>
+                        </div>
+                    </div>
+                    <br>
+
+                    <input type="submit" value="Salvar" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

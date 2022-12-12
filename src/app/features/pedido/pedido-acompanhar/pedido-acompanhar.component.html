@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col-md-4 offset-md-4">
+
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Status Pedido</h2>
+                </div>
+            </div>
+            <br>
+
+            <div class="progress">
+                <div *ngIf="pedido.statusPedido === 'Em Andamento'" style='width: 33%' class="progress-bar"
+                    class="progress-bar bg-warning" role="progressbar" aria-label="Warning example" style="width: 33%"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+
+                <div *ngIf="pedido.statusPedido === 'Em Transito'" style='width: 66%' class="progress-bar"
+                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progresso">
+                </div>
+
+                <div *ngIf="pedido.statusPedido === 'Finalizado'" style='width: 100%' class="progress-bar"
+                    class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 100%"
+                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="col-12">
+                <div class="dados">
+                    <ul>
+                        <li> <strong>Cod. Produto:</strong> {{pedido.idPedido}}</li>
+                        <li> <strong>Cliente:</strong> {{pedido.clienteId!.nome}}</li>
+                        <li> <strong>Valor:</strong> R$: {{pedido.valorTotal}}</li>
+                        <li> <strong>Data Pedido:</strong> {{pedido.dataPedido | date: 'dd/MM/yyyy'}}</li>
+                        <li> <strong>Status:</strong> {{ pedido.statusPedido }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button type="button" [routerLink]="['/pedido/gerenciar']" class="btn btn-primary">Voltar</button>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Altera status</h2>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <span>Cod. Pedido: {{pedido?.idPedido}}</span>
+                <span>Cliente: {{pedido?.clienteId?.nome}}</span>                
+                <span>Data Pedido: {{pedido?.dataPedido | date: 'dd/MM/yyyy'}}</span>                
+                <span>Valor: R$ {{pedido?.valorTotal}}</span>                
+                <span>Status: {{pedido?.statusPedido}}</span>
+            </div>
+            <br>
+            <div class="row">
+                <form [formGroup]="form" (ngSubmit)="salvar()">
+
+                    <div class="form-group">
+                        <select class="form-select" id="quantidade" formControlName="quantidade" aria-label="Default select example">
+                            <option selected>Selecione o status</option>
+                            <option value="Em Andamento">Em Andamento</option>
+                            <option value="Em Transito">Em Transito</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+                        <br>
+
+                        <input type="submit" value="Altera Status" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-4 offset-md-4">
+            <div class="text-center">
+                <div class="row m-4">
+                    <h2>Novo Cliente</h2>
+                </div>
+            </div>
+            <div class="row">
+                <form [formGroup]="form" (ngSubmit)="salvar()">
+                    <div class="form-group">
+                        <label for="nome" class="form-label">Nome Completo:</label>
+                        <input type="text" class="form-control" formControlName="nome" id="nome" autocomplete="off">
+                        <div class="alert alert-danger" [hidden]="form.get('nome')?.valid || form.get('nome')?.pristine">
+                            <p *ngIf="form.get('nome')?.errors?.['required']">O nome é Obrigatório!</p>
+                            <p *ngIf="form.get('nome')?.errors?.['minlength']">Minimo 3 caracteres!</p>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="cpf" class="form-label">Cpf:</label>
+                        <input type="text" step=1 class="form-control" formControlName="cpf" id="cpf" autocomplete="off">
+                        <div class="alert alert-danger" [hidden]="form.get('cpf')?.valid || form.get('cpf')?.pristine">
+                            <p *ngIf="form.get('cpf')?.errors?.['required']">CPF é obrigatório!!</p>
+                            <p *ngIf="form.get('cpf')?.errors?.['minlength']">CPF deve conter 11 digitos</p>
+                            <p *ngIf="form.get('cpf')?.errors?.['maxlength']">CPF deve conter apenas 11 digitos</p>
+                            <p *ngIf="form.get('cpf')?.errors?.['pattern']">CPF deve conter apenas caracteres numéricos</p>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="dataNascimento" class="form-label">Data Nascimento:</label>
+                        <input type="date" class="form-control" formControlName="dataNascimento" id="dataNascimento" autocomplete="off">
+                        <div class="alert alert-danger" [hidden]="form.get('dataNascimento')?.valid || form.get('dataNascimento')?.pristine">
+                            <p *ngIf="form.get('dataNascimento')?.errors?.['required']">Data de nascimento é obrigatória<br></p>
+                        </div>
+                    </div>
+                    <br>
+                    <input type="submit" value="Salvar" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
